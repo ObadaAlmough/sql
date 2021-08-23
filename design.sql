@@ -3,7 +3,7 @@ CREATE DATABASE DESIGN COLLATE 'utf8_general_ci'
 CREATE TABLE governorates (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     governorate VARCHAR(255) NOT NULL,
-        PRIMARY KEY(id)
+    PRIMARY KEY(id)
 
 
 );
@@ -13,8 +13,8 @@ CREATE TABLE stores(
     governorates_id INTEGER UNSIGNED NOT NULL,
     name VARCHAR(255) NOT NULL,
     adress VARCHAR(255) NOT NULL,
-        PRIMARY KEY(id),
-        FOREIGN key(governorates_id) REFERENCES governorates(id)
+    PRIMARY KEY(id),
+    FOREIGN key(governorates_id) REFERENCES governorates(id)
 
 );
 
@@ -30,8 +30,8 @@ CREATE TABLE suppliers(
 
 CREATE TABLE products (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL ,
-    code INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    code VARCHAR(255) UNSIGNED NOT NULL ,
     suppliers_id INTEGER UNSIGNED NOT NULL,
     bio TEXT, 
     price INTEGER UNSIGNED NOT NULL,
@@ -40,13 +40,13 @@ CREATE TABLE products (
 
 );
 
-CREATE TABLE product_supplier(
+CREATE TABLE product_store(
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     product_id INTEGER UNSIGNED NOT NULL,
-    supplier_id INTEGER UNSIGNED NOT NULL,
+    store_id INTEGER UNSIGNED NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN key(supplier_id) REFERENCES products(id),
-    FOREIGN key(product_id) REFERENCES suppliers(id)
+    FOREIGN key(store_id) REFERENCES stores(id),
+    FOREIGN key(product_id) REFERENCES products(id)
 
 
 );
